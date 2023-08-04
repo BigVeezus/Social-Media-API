@@ -1,24 +1,21 @@
 package com.springboot.blogAPI.controller;
 
 import com.springboot.blogAPI.dto.DoubleIdObjectDto;
-import com.springboot.blogAPI.dto.PostDto;
 import com.springboot.blogAPI.dto.UserDto;
+import com.springboot.blogAPI.utils.AppConstants;
 import com.springboot.blogAPI.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
-    private UserService userService;
+    private  UserService userService;
 
     public UserController(UserService userService) {
-        this.userService = userService;
+    this.userService = userService;
     }
 
     @PostMapping
