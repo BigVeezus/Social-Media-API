@@ -2,11 +2,13 @@ package com.springboot.blogAPI.service;
 
 import com.springboot.blogAPI.dto.DoubleIdObjectDto;
 import com.springboot.blogAPI.dto.PostDto;
+import com.springboot.blogAPI.model.Post;
 
 import java.util.List;
 
 public interface PostService {
-    PostDto createPost(PostDto postDto);
+
+    Post createPost(PostDto postDto);
 
     List<PostDto> getAllPosts(int pageNo, int pageSize, String sortBy);
 
@@ -14,7 +16,7 @@ public interface PostService {
 
     PostDto updatePost(PostDto postDto, Long id);
 
-    PostDto updatePostByLike(DoubleIdObjectDto doubleId);
+    String updatePostByLike(DoubleIdObjectDto doubleId);
 
     String deletePost(Long id);
 }

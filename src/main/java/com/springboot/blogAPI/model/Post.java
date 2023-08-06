@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.Time;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +18,7 @@ import java.util.Set;
 @Table(
         name = "Posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
 )
-public class Post {
+public class Post extends Auditable  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,17 +26,13 @@ public class Post {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "description", nullable = false)
-    private String description;
-
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "likesCount", nullable = false)
-    private Long likesCount;
-
-    @Column(name = "createdAt", nullable = false)
-    private Date createdAt;
+//    @Column(name = "created_at", nullable = true, columnDefinition = "date default CURRENT_TIMESTAMP")
+//    private Date createdAt;
+//    @Transient
+    List<String> likes = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Comment> comments = new HashSet<>();

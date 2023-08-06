@@ -1,6 +1,10 @@
 package com.springboot.blogAPI.dto;
 
+import jakarta.persistence.Transient;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class UserDto {
@@ -10,4 +14,7 @@ public class UserDto {
     private String profilePic;
 
     private String password;
+
+    List<String> following = new ArrayList<>();
+    List<String> followers = new ArrayList<>();
 }
