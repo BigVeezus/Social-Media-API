@@ -33,9 +33,12 @@ public class User {
     @Column(name = "profilePic", nullable = false)
     private String profilePic;
 
-    @Transient
+    @Column(name = "password", nullable = false)
+    private String password;
+
+//    @Transient
     List<String> following = new ArrayList<>();
-    @Transient
+//    @Transient
     List<String> followers = new ArrayList<>();
 
 }
